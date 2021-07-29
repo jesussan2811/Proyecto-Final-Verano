@@ -35,7 +35,7 @@ function obtenerBoardgame(req, res) {
     }
 }
 
-function crear(req, res) {
+function crearBoardgame(req, res) {
     if(connection){
         console.log(req.body);
         const boardgame = req.body;
@@ -132,10 +132,67 @@ function eliminar(req, res){
     }
 }
 
+function listarFavorites(req, res){
+    if(connection) {
+        let sql = "SELECT F.FID, B.Name, B.BName, B.Publisher, B.Category, B.BYear FROM Favorites F inner join Boardgames B on B.BID = F.IdBoardgame";
+
+        connection.query(sql, (err, data) => {
+            if(err){
+                res.status(400).json(err);
+            } else {
+                res.json(data);
+            }
+        })
+    }
+}
+
+function agregarFavorite(req, res){
+    if(connection){
+        const { id } = req.params;
+        const favorite = req.body;
+
+        favorite.IdBoardgame = id;
+
+        let sql = "INSERT INTO favorites set ?";
+
+        connection.query(sql, [favorite], (err, data) => {
+            if(err) {
+                res.status(400).json(err);
+            } else {
+                res.json({error: false, result: data, mensaje: "Favorite añadido con éxito."})
+            }
+        })
+    }
+}
+
+function eliminarFavorite(req, res){
+    if(connection) {
+        const {id} = req.params;
+
+        let sql = "DELETE FROM Favorites WHERE id = ?";
+        connection.query(sql, [id], (err, data) => {
+            if(err){
+                res.status(400).json(err);
+            } else {
+                let mensaje = "";
+                if(data.affectedRows === 0)
+                    mensaje = "Favorite no encontrada";
+                else
+                    mensaje = "Favorite eliminada con éxito.";
+                res.json({error: false, result: data, mensaje});
+            }
+        });
+
+    }
+}
+
 module.exports = {
     listar,
     obtenerBoardgame,
-    crear,
+    crearBoardgame,
     editar,
-    eliminar
+    eliminar,
+    listarFavorites,
+    agregarFavorite,
+    eliminarFavorite
 }
