@@ -1,18 +1,51 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Vista Favoritos</h1>
+    <Tabla :items="favoritos" :busy="loading" :fields="fields">
+
+    </Tabla>
+
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Tabla from '../components/Tabla.vue';
+import {mapState, mapActions} from 'vuex'
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Tabla
+  },
+  data() {
+    return {
+       fields: [
+        {key: 'FID', label: 'id'},
+        {key: 'BName', label: 'nombre'},
+        {key: 'Publisher', label: 'marca'},
+        {key: 'Category', label: 'categoria'},
+
+        {
+          key: 'BYear',
+          label: 'año',
+          formatter: value => {
+            return value || "----"
+          }
+        },
+        'acciones'
+      ]
+    }
+  },
+  computed: {
+    ...mapState(['favoritos', 'loading'])
+  },
+methods: {
+    ...mapActions(['listarFavorites']),
+            
+  },
+  mounted() {
+    this.listarFavorites();
   }
 }
+
+
 </script>

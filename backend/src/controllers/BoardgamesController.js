@@ -89,7 +89,7 @@ function crearBoardgame(req, res) {
     }
 }
 
-function editar(req, res) {
+function editarBoardgame(req, res) {
     if(connection) {
         const { id } = req.params;
         const boardgame = req.body;
@@ -111,11 +111,11 @@ function editar(req, res) {
     }
 }
 
-function eliminar(req, res){
+function eliminarBoardgame(req, res){
     if(connection) {
         const {id} = req.params;
 
-        let sql = "DELETE FROM Boardgame WHERE id = ?";
+        let sql = "DELETE FROM Boardgames WHERE id = ?";
         connection.query(sql, [id], (err, data) => {
             if(err){
                 res.status(400).json(err);
@@ -134,7 +134,7 @@ function eliminar(req, res){
 
 function listarFavorites(req, res){
     if(connection) {
-        let sql = "SELECT F.FID, B.Name, B.BName, B.Publisher, B.Category, B.BYear FROM Favorites F inner join Boardgames B on B.BID = F.IdBoardgame";
+        let sql = "SELECT F.FID, B.BName, B.Publisher, B.Category, B.BYear FROM Favorites F inner join Boardgames B on B.BID = F.IdBoardgame";
 
         connection.query(sql, (err, data) => {
             if(err){
@@ -148,14 +148,11 @@ function listarFavorites(req, res){
 
 function agregarFavorite(req, res){
     if(connection){
-        const { id } = req.params;
-        const favorite = req.body;
-
-        favorite.IdBoardgame = id;
+        const { IdBoardgame } = req.params.id;
 
         let sql = "INSERT INTO favorites set ?";
 
-        connection.query(sql, [favorite], (err, data) => {
+        connection.query(sql, [IdBoardgame], (err, data) => {
             if(err) {
                 res.status(400).json(err);
             } else {
@@ -190,8 +187,8 @@ module.exports = {
     listar,
     obtenerBoardgame,
     crearBoardgame,
-    editar,
-    eliminar,
+    editarBoardgame,
+    eliminarBoardgame,
     listarFavorites,
     agregarFavorite,
     eliminarFavorite
