@@ -166,7 +166,7 @@ function eliminarFavorite(req, res){
     if(connection) {
         const {id} = req.params;
 
-        let sql = "DELETE FROM Favorites WHERE id = ?";
+        let sql = "DELETE FROM Favorites WHERE IdBoardgame = ?";
         connection.query(sql, [id], (err, data) => {
             if(err){
                 res.status(400).json(err);

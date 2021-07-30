@@ -6,16 +6,13 @@
       <h5>Year:{{ year }}</h5>
 
     <template slot="actions" slot-scope="{item}">
-         <b-button :to="`/editar/${item.id}`" class="mx-1">Editar</b-button>
+         <b-button :to="`/Boardgames/Editar/${item.id}`" class="mx-1">Editar</b-button>
          <b-button @click="eliminar(item.id)" class="mx-1">Eliminar</b-button>
          <div class="form-check form-check-inline">
-        <input
-          v-model="todo.tipo"
-          class="form-check-input"
-          type="checkbox"
-          id="Favoritos"
-          value="Favoritos"
-        />
+           
+        <input type="checkbox" id="checkbox" v-model="fav" @click="favorito">
+        <label for="checkbox">{{ checked }}</label>
+
         <label class="form-check-label" for="Favoritos">Favoritos</label>
       </div>
     </template>
@@ -25,6 +22,7 @@
 </template>
 
 <script>
+import {mapState, mapActions} from 'vuex' 
 export default {
 
   name: "Tarjeta",
@@ -50,6 +48,47 @@ export default {
       required: true,
     },
 
+    fav: {
+      type: Boolean,
+    },
+
+  },
+  methods: {
+    ...mapActions(['eliminarBoardgame']),
+    eliminar(idItem) {
+      this.$bvModal.msgBoxConfirm('Esta opción no se puede deshacer.', {
+          title: '¿Desea eliminar el BoardGame?',
+          size: 'sm',
+          buttonSize: 'sm',
+          okVariant: 'danger',
+          okTitle: 'ACEPTAR',
+          cancelTitle: 'CANCELAR',
+          footerClass: 'p-2',
+          hideHeaderClose: true,
+          centered: true
+        })
+          .then(value => {
+            if(value) {
+              this.eliminarBoardgame({
+                id: idItem,
+                onComplete: (response) => {
+                  this.$notify({
+                    type: 'success',
+                    title: response.data.mensaje
+                  });
+                  this.$router.push({
+                name: 'VistaBoardGames'
+                 })
+                }
+              })
+            }
+          })
+          .catch(err => {
+            // An error occurred
+          })
+
+    },
+    favorito 
   },
 
 };

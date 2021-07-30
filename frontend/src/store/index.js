@@ -66,7 +66,7 @@ export default new Vuex.Store({
       .finally(() =>  commit('SET_LOADING', false));
     },
     agregarFavorite({commit}, {params, onComplete, onError}){
-      axios.post('http://localhost:3000/favorite', params)
+      axios.post(`http://localhost:3000/favorite/${id}`)
       .then(onComplete)
       .catch(onError);
     },

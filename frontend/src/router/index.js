@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import VistaBoardGames from '../views/VistaBoardGames.vue'
 import VistaDetalle from '../views/VistaDetalle.vue'
+import VistaAgregar from '../views/VistaAgregar.vue'
+import VistaEditar from '../views/VistaEditar.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +18,16 @@ const routes = [
     path: '/Boardgames',
     name: 'VistaBoardGames',
     component: VistaBoardGames
+  },
+  {
+    path: '/Boardgames/Agregar',
+    name: 'VistaAgregar',
+    component: VistaAgregar
+  },
+  {
+    path: '/Boardgames/Editar/:id',
+    name: 'VistaEditar',
+    component: VistaEditar
   },
   {
     path: '/Boardgames/Detalle/:id',
