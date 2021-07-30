@@ -41,11 +41,11 @@ function crearBoardgame(req, res) {
         const boardgame = req.body;
 
                 /*NOMBRE(NAME)*/
-        if(!boardgame.Name){
+        if(!boardgame.BName){
             return res.status(400).send({error: true, mensaje: "El nombre es obligatorio"});
         }
 
-        if(boardgame.Name.length > 80 && boardgame.Name){
+        if(boardgame.BName.length > 80 && boardgame.BName){
             return res.status(400).send({error: true, mensaje: "La longitud debe de ser de menos de 80 caracteres."});            
         }
 

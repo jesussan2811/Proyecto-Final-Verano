@@ -133,7 +133,7 @@ export default {
   methods: {
     ...mapActions(["crearBoardgame"]),
     guardarBoardGame() {
-      if (this.validacionNombre) {
+      if (this.validacionNombre && this.validacionPublisher && this.validacionCategory) {
         // Si tengo los datos que valide
         this.erroresValidacion = false;
         console.log("Si puedo guardar");
