@@ -63,7 +63,7 @@ function crearBoardgame(req, res) {
             return res.status(400).send({error: true, mensaje: "La Categoria es obligatorio"});
         }
 
-        if(boardgame.Category.length === 2 && boardgame.Category){
+        if(boardgame.Category.length !== 2 && boardgame.Category){
             return res.status(400).send({error: true, mensaje: "La longitud debe de ser de 2 caracteres."});            
         }
 
@@ -73,7 +73,7 @@ function crearBoardgame(req, res) {
         }
 
                 /*AÑO(YEAR)*/
-        if(boardgame.Year.length === 4 && boardgame.Year){
+        if(boardgame.Year.length !== 4 && boardgame.Year){
             return res.status(400).send({error: true, mensaje: "El año debe tener 4 digitos."});            
         }
 

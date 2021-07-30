@@ -7,7 +7,7 @@
 
          <b-button :to="`/Boardgames/Detalle/${id}`" class="mx-1">Detalle</b-button>
          <b-button :to="`/Boardgames/Editar/${id}`" class="mx-1">Editar</b-button>
-         <b-button @click="eliminar(item.id)" class="mx-1">Eliminar</b-button>
+         <b-button @click="eliminar(id)" class="mx-1">Eliminar</b-button>
          
          <div class="form-check form-check-inline"> 
           <input type="checkbox" id="checkbox" v-model="fav" @click="favorito">

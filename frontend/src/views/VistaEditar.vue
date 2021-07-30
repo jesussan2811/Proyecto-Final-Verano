@@ -141,7 +141,7 @@ export default {
         console.log("Si puedo guardar");
         this.editarBoardgame({
           id: this.$route.params.id,
-          params: this.persona,
+          params: this.boardgame,
           onComplete: (response) => {
             console.log(response);
             this.$notify({
