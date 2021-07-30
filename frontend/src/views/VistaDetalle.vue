@@ -22,14 +22,21 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'VistaDetalle',
+    data(){
+        return{
+            bgame:{
+                id:this.$route.params.id,
+            }
+        }
+    },
     computed: {
-        ...mapState(['boardgame'])
+        ...mapState(['boardgame','bgame'])
     },
     methods: {
         ...mapActions(['obtenerboardgame'])
     },
     created() {
-        this.obtenerboardgame(this.$route.params.id)
+        this.obtenerboardgame(this.bgame)
     }
 }
 </script>

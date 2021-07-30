@@ -5,14 +5,13 @@
       <h5>Publisher:{{ publisher }}</h5>
       <h5>Year:{{ year }}</h5>
 
+
          <b-button :to="`/Boardgames/Detalle/${id}`" class="mx-1">Detalle</b-button>
          <b-button :to="`/Boardgames/Editar/${id}`" class="mx-1">Editar</b-button>
          <b-button @click="eliminar(id)" class="mx-1">Eliminar</b-button>
+
+
          
-         <div class="form-check form-check-inline"> 
-          <input type="checkbox" id="checkbox" v-model="fav" @click="favorito">
-          <label class="form-check-label" for="Favoritos">Favoritos</label>
-         </div>
 
       <hr />
     </div>
@@ -53,6 +52,7 @@ export default {
   },
   methods: {
     ...mapActions(['eliminarBoardgame']),
+
     eliminar(idItem) {
       this.$bvModal.msgBoxConfirm('Esta opción no se puede deshacer.', {
           title: '¿Desea eliminar el BoardGame?',
@@ -75,7 +75,7 @@ export default {
                     title: response.data.mensaje
                   });
                   this.$router.push({
-                name: 'VistaBoardGames'
+                name: 'Home'
                  })
                 }
               })

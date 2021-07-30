@@ -23,8 +23,9 @@
       <h6>Categorias</h6>
       <div id="v-model-radiobutton">
         <div>
-          <Input
+          <input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category11"
           value="11"
@@ -33,8 +34,9 @@
         <label for="category11">Adventure</label>
         </div>
         <div>
-          <Input
+          <input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category12"
           value="12"
@@ -43,8 +45,9 @@
         <label for="category12">Puzzle</label>
         </div>
         <div>
-        <Input
+        <input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category13"
           value="13"
@@ -53,8 +56,9 @@
         <label for="category13">Strategy</label>
         </div>
         <div>
-        <Input
+        <input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category14"
           value="14"
@@ -63,8 +67,9 @@
         <label for="category14">Fantasy</label>
         </div>
         <div>
-        <Input
+        <input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category15"
           value="15"

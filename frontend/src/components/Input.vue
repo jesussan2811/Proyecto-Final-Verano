@@ -4,6 +4,7 @@
     <input 
         :id="id" 
         :type="type"  
+        :name="name"
         class="form-control" 
         :maxlength="maxlength" 
         :disabled="disabled"
@@ -23,6 +24,10 @@ export default {
     id: {
       type: [String, Number],
       require: true,
+    },
+    name: {
+      type: String,
+      default: "",
     },
     titulo: {
       type: String,

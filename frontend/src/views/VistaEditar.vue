@@ -2,7 +2,7 @@
   <div>
     <h1>Editar BoardGame</h1>
     <form @submit.prevent="guardarBoardGame()">
-      <Input v-model="boardgame.id" titulo="ID" id="id" disabled />
+      <Input v-model="boardgame.BID" titulo="ID" id="BID" :value="boardgame.BID" disabled />
       <Input
         v-model="boardgame.BName"
         titulo="Nombre"
@@ -30,6 +30,7 @@
         <div>
           <Input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category11"
           value="11"
@@ -40,6 +41,7 @@
         <div>
           <Input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category12"
           value="12"
@@ -50,6 +52,7 @@
         <div>
         <Input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category13"
           value="13"
@@ -60,6 +63,7 @@
         <div>
         <Input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category14"
           value="14"
@@ -70,6 +74,7 @@
         <div>
         <Input
           v-model="boardgame.Category"
+          name="Category"
           type="radio"
           id="category15"
           value="15"
@@ -113,6 +118,7 @@ export default {
     return {
       boardgame: {},
       erroresValidacion: false,
+      
     };
   },
   computed: {
@@ -135,13 +141,21 @@ export default {
   methods: {
     ...mapActions(["editarBoardgame", "obtenerboardgame"]),
     guardarBoardGame() {
-      if (this.validacionNombre) {
+      let object = {
+        BID : boardgame.BID,
+        BName : boardgame.BName,
+        Publisher : boardgame.Publisher,
+        Category : boardgame.Category,
+        BDescription : boardgame.BDescription,
+        BYear : boardgame.BYear
+      }
+      if (this.validacionPublisher && this.validacionCategory) {
         // Si tengo los datos que valide
         this.erroresValidacion = false;
         console.log("Si puedo guardar");
         this.editarBoardgame({
           id: this.$route.params.id,
-          params: this.boardgame,
+          params: this.object,
           onComplete: (response) => {
             console.log(response);
             this.$notify({

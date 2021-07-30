@@ -16,7 +16,7 @@ function listar(req, res){
 
 function obtenerBoardgame(req, res) {
     if(connection){
-        const {id} = req.parms;
+        const {id} = req.params;
 
         let sql = `SELECT B.*, F.FID FROM Boardgames B LEFT JOIN Favorites F on F.IdBoardgame = B.BID WHERE BID = ${connection.escape(id)}`;
         
@@ -34,6 +34,7 @@ function obtenerBoardgame(req, res) {
 
     }
 }
+
 
 function crearBoardgame(req, res) {
     if(connection){
@@ -68,12 +69,12 @@ function crearBoardgame(req, res) {
         }
 
                 /*DESCRIPCION(DESCRIPTION)*/
-        if(boardgame.Description.length > 200 && boardgame.Description){
+        if(boardgame.BDescription.length > 200 && boardgame.BDescription){
             return res.status(400).send({error: true, mensaje: "La longitud debe de ser de menos de 80 caracteres."});            
         }
 
                 /*AÑO(YEAR)*/
-        if(boardgame.Year.length !== 4 && boardgame.Year){
+        if(boardgame.BYear.length !== 4 && boardgame.BYear){
             return res.status(400).send({error: true, mensaje: "El año debe tener 4 digitos."});            
         }
 
@@ -94,7 +95,7 @@ function editarBoardgame(req, res) {
         const { id } = req.params;
         const boardgame = req.body;
 
-        let sql = "UPDATE Boardgames set ? WHERE id = ?";
+        let sql = "UPDATE Boardgames set ? WHERE BID = ?";
 
         connection.query(sql, [boardgame, id], (err, data) => {
             if(err) {
@@ -115,7 +116,7 @@ function eliminarBoardgame(req, res){
     if(connection) {
         const {id} = req.params;
 
-        let sql = "DELETE FROM Boardgames WHERE id = ?";
+        let sql = "DELETE FROM Boardgames WHERE BID = ?";
         connection.query(sql, [id], (err, data) => {
             if(err){
                 res.status(400).json(err);
