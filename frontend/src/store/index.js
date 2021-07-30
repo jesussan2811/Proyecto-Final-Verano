@@ -22,10 +22,10 @@ export default new Vuex.Store({
     SET_BOARDGAME(state, boardgame) {
       state.boardgame = boardgame;
     },
-    SET_FAVORITOS(state, favoritos) {
+    SET_FAVORITES(state, favoritos) {
       state.favoritos = favoritos;
     },
-    SET_FAVORITO(state, favorito) {
+    SET_FAVORITE(state, favorito) {
       state.favorito = favorito;
     }
   },

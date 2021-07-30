@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import VistaBoardGames from '../views/VistaBoardGames.vue'
 import VistaDetalle from '../views/VistaDetalle.vue'
 
 Vue.use(VueRouter)

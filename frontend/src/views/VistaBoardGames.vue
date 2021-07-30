@@ -7,6 +7,7 @@
         <hr />
           <Tarjeta
             :key="boardgame.BID"
+            :id="boardgame.BID"
             :name="boardgame.BName"
             :publisher="boardgame.Publisher"
             :year="boardgame.BYear"

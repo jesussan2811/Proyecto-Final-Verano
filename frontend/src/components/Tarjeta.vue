@@ -21,7 +21,7 @@
     </template>
       <hr />
     </div>
-  <router-link>
+  </router-link>
 </template>
 
 <script>
@@ -31,7 +31,7 @@ export default {
   props: {
 
     id: {
-      type: String,
+      type: Number,
       required: true,
     },
 
