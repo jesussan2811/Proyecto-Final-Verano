@@ -6,7 +6,7 @@ const { listar, obtenerBoardgame, crearBoardgame, editarBoardgame, eliminarBoard
 
 routes.get('/boardgame', listar);
 
-routes.get('/boardgame/:id', obtenerBoardgame );
+routes.get('/boardgame/:id', obtenerBoardgame);
 
 routes.post('/boardgame', crearBoardgame);
 

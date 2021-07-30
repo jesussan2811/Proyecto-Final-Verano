@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import VistaDetalle from '../views/VistaDetalle.vue'
 
 Vue.use(VueRouter)
 
@@ -9,6 +10,16 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/Boardgames',
+    name: 'VistaBoardGames',
+    component: VistaBoardGames
+  },
+  {
+    path: '/Boardgames/Detalle/:id',
+    name: 'VistaDetalle',
+    component: VistaDetalle
   },
   {
     path: '/about',

@@ -2,7 +2,7 @@ const connection = require('../config/connections');
 
 function listar(req, res){
         if(connection) {
-            let sql = "SELECT B.*, F.FID FROM Boardgames B inner join Favorites F on F.IdBoardgame = B.BID";
+            let sql = "SELECT B.*, F.FID FROM Boardgames B LEFT JOIN Favorites F on F.IdBoardgame = B.BID;";
 
             connection.query(sql, (err, data) => {
                 if(err){
@@ -18,7 +18,7 @@ function obtenerBoardgame(req, res) {
     if(connection){
         const {id} = req.parms;
 
-        let sql = `SELECT B.*, F.FID FROM Boardgames B INNER JOIN Favorites F ON F.IdBoardgame = B.BID WHERE BID = ${connection.escape(id)}`;
+        let sql = `SELECT B.*, F.FID FROM Boardgames B LEFT JOIN Favorites F on F.IdBoardgame = B.BID WHERE BID = ${connection.escape(id)}`;
         
         connection.query(sql, (err, boardgame) => {
             if(err) {

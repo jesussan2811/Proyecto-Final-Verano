@@ -1,12 +1,11 @@
 <template>
-  <router-link :to="`/pelicula/detalle/${id}`">
+  <router-link :to="`/Boardgames/Detalle/${id}`">
     <div>
       <h5>Name:{{ name }}</h5>
       <h5>Publisher:{{ publisher }}</h5>
       <h5>Year:{{ year }}</h5>
 
     <template slot="actions" slot-scope="{item}">
-         <b-button :to="`/detalle/${item.id}`" class="mx-1">Detalle</b-button>
          <b-button :to="`/editar/${item.id}`" class="mx-1">Editar</b-button>
          <b-button @click="eliminar(item.id)" class="mx-1">Eliminar</b-button>
          <div class="form-check form-check-inline">
@@ -22,11 +21,10 @@
     </template>
       <hr />
     </div>
-  </router-link>
+  <router-link>
 </template>
 
 <script>
-
 export default {
 
   name: "Tarjeta",
