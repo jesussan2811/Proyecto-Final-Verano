@@ -1,9 +1,8 @@
 <template>
   <div class="home">
     <h1>Vista Favoritos</h1>
-    <Tabla :items="favoritos" :busy="loading" :fields="fields">
+    <Tabla :items="favoritos" :busy="loading" :fields="fields" />
 
-    </Tabla>
 
   </div>
 </template>
@@ -30,8 +29,7 @@ export default {
           formatter: value => {
             return value || "----"
           }
-        },
-        'acciones'
+        }
       ]
     }
   },

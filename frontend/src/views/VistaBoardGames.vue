@@ -3,7 +3,7 @@
     <div v-if="loading">Cargando....</div>
     <div v-else>
       <h1>Boardgames</h1>
-         <b-button :to="'/Boardgames/Agregar}' " class="mx-1">Agregar</b-button>
+         <b-button :to="'/Boardgames/Agregar' " class="mx-1">Agregar</b-button>
       <div v-for="boardgame in boardgames" :key="boardgame.BID">
         <hr />
           <Tarjeta

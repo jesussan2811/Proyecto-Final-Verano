@@ -1,24 +1,22 @@
 <template>
-  <router-link :to="`/Boardgames/Detalle/${id}`">
+  
     <div>
       <h5>Name:{{ name }}</h5>
       <h5>Publisher:{{ publisher }}</h5>
       <h5>Year:{{ year }}</h5>
 
-    <template slot="actions" slot-scope="{item}">
-         <b-button :to="`/Boardgames/Editar/${item.id}`" class="mx-1">Editar</b-button>
+         <b-button :to="`/Boardgames/Detalle/${id}`" class="mx-1">Detalle</b-button>
+         <b-button :to="`/Boardgames/Editar/${id}`" class="mx-1">Editar</b-button>
          <b-button @click="eliminar(item.id)" class="mx-1">Eliminar</b-button>
-         <div class="form-check form-check-inline">
-           
-        <input type="checkbox" id="checkbox" v-model="fav" @click="favorito">
-        <label for="checkbox">{{ checked }}</label>
+         
+         <div class="form-check form-check-inline"> 
+          <input type="checkbox" id="checkbox" v-model="fav" @click="favorito">
+          <label class="form-check-label" for="Favoritos">Favoritos</label>
+         </div>
 
-        <label class="form-check-label" for="Favoritos">Favoritos</label>
-      </div>
-    </template>
       <hr />
     </div>
-  </router-link>
+  
 </template>
 
 <script>
@@ -87,8 +85,8 @@ export default {
             // An error occurred
           })
 
-    },
-    favorito 
+    }/*,
+    favorito*/ 
   },
 
 };

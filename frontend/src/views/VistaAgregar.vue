@@ -3,7 +3,7 @@
     <h1>Agregar BoardGame</h1>
     <form @submit.prevent="guardarBoardGame()">
       <Input
-        v-model="BoardGame.BName"
+        v-model="boardgame.BName"
         titulo="Nombre"
         id="nombre"
         placeholder="Ingrese un nombre."
@@ -13,63 +13,69 @@
       />
 
       <Input
-        v-model="BoardGame.Publisher"
+        v-model="boardgame.Publisher"
         titulo="Marca"
         id="publisher"
         placeholder="Ingrese una marca"
         :maxlength="60"
         :error="erroresValidacion && !validacionPublisher"
       />
-      <div>
-        <Input
-          v-model="BoardGame.Category"
-          class="form-check-input"
+      <h6>Categorias</h6>
+      <div id="v-model-radiobutton">
+        <div>
+          <Input
+          v-model="boardgame.Category"
           type="radio"
           id="category11"
           value="11"
           :error="erroresValidacion && !validacionCategory"         
         />
         <label for="category11">Adventure</label>
-        <Input
-          v-model="BoardGame.Category"
-          class="form-check-input"
+        </div>
+        <div>
+          <Input
+          v-model="boardgame.Category"
           type="radio"
           id="category12"
           value="12"
           :error="erroresValidacion && !validacionCategory"         
         />
         <label for="category12">Puzzle</label>
+        </div>
+        <div>
         <Input
-          v-model="BoardGame.Category"
-          class="form-check-input"
+          v-model="boardgame.Category"
           type="radio"
           id="category13"
           value="13"
           :error="erroresValidacion && !validacionCategory"         
         />
         <label for="category13">Strategy</label>
+        </div>
+        <div>
         <Input
-          v-model="BoardGame.Category"
-          class="form-check-input"
+          v-model="boardgame.Category"
           type="radio"
           id="category14"
           value="14"
           :error="erroresValidacion && !validacionCategory"         
         />
         <label for="category14">Fantasy</label>
+        </div>
+        <div>
         <Input
-          v-model="BoardGame.Category"
-          class="form-check-input"
+          v-model="boardgame.Category"
           type="radio"
           id="category15"
           value="15"
           :error="erroresValidacion && !validacionCategory"         
         />
         <label for="category15">Civilization</label>
+        </div>
       </div>
-      
+
         <Input
-        v-model="BoardGame.BDescription"
+        v-model="boardgame.BDescription"
         titulo="Descripcion"
         id="description"
         placeholder="Ingrese una descripcion"
@@ -77,7 +83,7 @@
       />
 
       <Input
-        v-model="BoardGame.BYear"
+        v-model="boardgame.BYear"
         titulo="Año"
         id="year"
         placeholder="Ingrese el año de salida"
@@ -168,4 +174,18 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#v-model-radiobutton {
+  display: inline-flex;
+  width: 100%;
+}
+#v-model-radiobutton {
+  justify-content: space-around;
+}
+#v-model-radiobutton input[type="radio"]{
+  width: 60px;
+}
+#v-model-radiobutton label{
+  display: flex;
+}
+</style>
